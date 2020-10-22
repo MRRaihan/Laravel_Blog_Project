@@ -18,6 +18,7 @@ Route::get('/', function () {
 //******Authenticatio*******
 
 Route::get('login', 'LoginController@index')->name('user.login');
+Route::post('login', 'LoginController@login')->name('login');
 
 // *******Admin route********
 
