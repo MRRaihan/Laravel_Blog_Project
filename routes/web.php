@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//******Authenticatio*******
+
+Route::get('login', 'LoginController@index')->name('user.login');
 
 // *******Admin route********
 
