@@ -121,10 +121,11 @@
                         <i class="ti-settings text-primary"></i>
                         Settings
                     </a>
-                    <a class="dropdown-item">
-                        <i class="ti-power-off text-primary"></i>
-                        Logout
-                    </a>
+
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-warning ti-power-off text-primary">Logout</button>
+                    </form>
                 </div>
             </li>
         </ul>

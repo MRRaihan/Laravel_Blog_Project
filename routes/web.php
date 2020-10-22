@@ -19,8 +19,11 @@ Route::get('/', function () {
 
 Route::get('login', 'LoginController@index')->name('user.login');
 Route::post('login', 'LoginController@login')->name('login');
+Route::post('logout', 'LogoutController@logout')->name('logout');
 
 // *******Admin route********
+Route::middleware('auth')->group(function (){
+    Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
+    Route::resource('user', 'UserController');
+});
 
-Route::get('dashboard', 'DashboardController@dashboard')->name('admin.dashboard');
-Route::resource('user', 'UserController');
