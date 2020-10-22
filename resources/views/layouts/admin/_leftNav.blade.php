@@ -13,8 +13,8 @@
         </a>
         <div class="collapse" id="ui-basic">
             <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">User List</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Create New User</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('user.index')}}">User List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('user.create')}}">Create New User</a></li>
             </ul>
         </div>
     </li>
