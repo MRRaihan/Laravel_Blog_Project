@@ -12,3 +12,4 @@
 <link rel="stylesheet" href="{{asset('css/admin/style.css')}}">
 <!-- endinject -->
 <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">

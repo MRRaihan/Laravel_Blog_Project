@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
+
 class UserController extends Controller
 {
     /**
@@ -41,6 +42,7 @@ class UserController extends Controller
         $data['password']=bcrypt($request->password);
 
         User::create($data);
+        Session()->flash('success', 'User created successfully');
         return redirect()->route('user.index');
     }
 
@@ -85,6 +87,7 @@ class UserController extends Controller
         }
 
         User::findOrFail($id)->update($data);
+        Session()->flash('success', 'User Update successfully');
         return redirect()->route('user.index');
 
     }
@@ -98,6 +101,7 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::destroy($id);
+        Session()->flash('success', 'User deleted  successfully');
         return redirect()->route('user.index');
     }
 }

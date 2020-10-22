@@ -14,3 +14,12 @@
 <!-- Custom js for this page-->
 <script src="{{asset('js/admin/dashboard.js')}}"></script>
 <!-- End custom js for this page-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+    @if(Session::has('success'))
+    toastr.success("{{ Session::get('success') }}");
+    @endif
+    $(document).ready(function () {
+        bsCustomFileInput.init()
+    })
+</script>
