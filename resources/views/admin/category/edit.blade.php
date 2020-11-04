@@ -11,7 +11,7 @@
                         @method('put')
                         <div class="form-group">
                             <label for="name">Name</label>
-                            <input name="name" type="text" value="{{$category->name}}" class="form-control" id="name" placeholder="User name">
+                            <input name="name" type="text" value="{{$category->name}}" class="form-control" id="name" placeholder="Category name">
                         </div>
                         <div class="form-group">
                             <label for="email">Description</label>
