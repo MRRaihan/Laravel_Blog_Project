@@ -14,7 +14,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+      $data['categories'] = Category::all();
+      $data['serial']= 1;
+      return view('admin.category.index', $data);
     }
 
     /**
@@ -24,7 +26,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.category.create');
     }
 
     /**
@@ -35,7 +37,9 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Category::create($request->except('_token'));
+        session()->flash('success', 'Category Create Successfully');
+        return redirect()->route('category.index');
     }
 
     /**
@@ -57,7 +61,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $data['category']=$category;
+        return view('admin.category.edit', $data);
     }
 
     /**
@@ -69,7 +74,10 @@ class CategoryController extends Controller
      */
     public function update(Request $request, Category $category)
     {
-        //
+        $category->update($request->except('_token'));
+        session()->flash('success', 'Category Update Successfully');
+        return redirect()->route('category.index');
+
     }
 
     /**
@@ -80,6 +88,8 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        $category->delete();
+        session()->flash('success', 'Category Deleted Successfully');
+        return redirect()->route('category.index');
     }
 }
