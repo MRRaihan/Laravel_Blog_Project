@@ -6,15 +6,29 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+        <a class="nav-link" data-toggle="collapse" href="#ui-user" aria-expanded="false" aria-controls="ui-basic">
             <i class="ti-user menu-icon"></i>
             <span class="menu-title">Users</span>
             <i class="menu-arrow"></i>
         </a>
-        <div class="collapse" id="ui-basic">
+        <div class="collapse" id="ui-user">
             <ul class="nav flex-column sub-menu">
                 <li class="nav-item"> <a class="nav-link" href="{{route('user.index')}}">User List</a></li>
                 <li class="nav-item"> <a class="nav-link" href="{{route('user.create')}}">Create New User</a></li>
+            </ul>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ui-category" aria-expanded="false" aria-controls="ui-basic">
+            <i class="ti-tag menu-icon"></i>
+            <span class="menu-title">Category</span>
+            <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-category">
+            <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{route('category.index')}}">Category List</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{route('category.create')}}">Create New Category</a></li>
             </ul>
         </div>
     </li>
