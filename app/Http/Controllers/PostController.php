@@ -97,7 +97,10 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        $data['post']= $post;
+        $data['categories'] = Category::orderBy('name')->get();
+        $data['authors'] = Author::orderBy('name')->get();
+        return view('admin.post.edit', $data);
     }
 
     /**
@@ -109,7 +112,41 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+
+        $request->validate([
+            'category_id'=>'required',
+            'author_id'=>'required',
+            'title'=>'required',
+            'content'=>'required',
+            'status'=>'required',
+            'image'=>'mimes:jpeg,png',
+        ]);
+
+
+        if ($request->hasFile('image')){
+            $file = $request->file('image');
+            $path ='images/upload/posts';
+            $file_name = $file->getClientOriginalName();
+            $file->move($path, $file_name);
+            $data['image']= $path.'/'. $file_name;
+
+            if (file_exists($post->image)){
+                unlink($post->image);
+            }
+
+        }
+        $data['category_id'] = $request->category_id;
+        $data['author_id'] = $request->author_id;
+        $data['title'] = $request->title;
+        $data['content'] = $request->content;
+        $data['status'] = $request->status;
+
+        if($request->status == 'published'){
+            $data['published_at'] = date('Y-m-d');
+        }
+        $post->update($data);
+        session()->flash('success', 'Post Update Successfully');
+        return redirect()->route('post.index');
     }
 
     /**
@@ -120,6 +157,11 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        if (file_exists($post->image)){
+            unlink($post->image);
+        }
+        $post->delete();
+        session()->flash('success', 'Post Deleted Successfully');
+        return redirect()->route('post.index');
     }
 }
