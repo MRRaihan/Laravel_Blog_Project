@@ -83,7 +83,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        $data['post']= $post;
+        $data['categories'] = Category::orderBy('name')->get();
+        $data['authors'] = Author::orderBy('name')->get();
+        return view('admin.post.show', $data);
     }
 
     /**
